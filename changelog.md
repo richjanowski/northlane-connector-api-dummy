@@ -2,22 +2,6 @@
 
 All notable changes to the Northlane Connector API are documented here. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
-## [2.5.0] - 2026-07-01
-
-### Added
-- New `billing:manage` scope, covering invoice access and payment method updates.
-- New built-in role `billing_admin`, scoped to a single enterprise, for teams that want billing access without full `owner` rights.
-- `reservations.waitlist` feature: resources at capacity can now accept waitlisted reservations via `POST /v1/reservations/waitlist`. Available on Growth and Enterprise plans.
-
-### Changed
-- Rate limit for standard Enterprise Tokens raised from 600 to 900 requests/minute.
-- `owner` role's default scopes now explicitly include `billing:manage` (previously billing access was implicit and not scope-gated).
-
-### Deprecated
-- The `reports:read`-only combination for billing summaries (`GET /v1/enterprises/{id}/reports/billing`) is deprecated in favor of the new `billing:manage`-gated `GET /v1/enterprises/{id}/billing/invoices`. Will be removed in 3.0.0.
-
----
-
 ## [2.4.0] - 2026-06-15
 
 ### Added
