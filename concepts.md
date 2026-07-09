@@ -41,7 +41,6 @@ Every request must include an `Authorization` header with a bearer token. Tokens
 | `resources:write` | Update resource state and attributes |
 | `webhooks:manage` | Register and manage webhook subscriptions |
 | `reports:read` | Access to aggregated reporting endpoints |
-| `billing:manage` | Access to invoices and payment method management (added in 2.5.0) |
 
 See [authentication.md](authentication.md) for how scopes map onto user roles.
 
