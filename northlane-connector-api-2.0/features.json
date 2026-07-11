@@ -1,0 +1,60 @@
+{
+  "$schema": "https://api.northlane.example/schemas/features.json",
+  "api_version": "2.5.0",
+  "last_updated": "2026-07-01",
+  "plans": {
+    "starter": {
+      "label": "Starter",
+      "max_enterprises": 1,
+      "portfolio_access_tokens": false,
+      "rate_limit_per_minute": 600,
+      "features": [
+        "reservations.basic",
+        "resources.basic",
+        "webhooks.basic"
+      ]
+    },
+    "growth": {
+      "label": "Growth",
+      "max_enterprises": 5,
+      "portfolio_access_tokens": true,
+      "rate_limit_per_minute": 1200,
+      "features": [
+        "reservations.basic",
+        "reservations.waitlist",
+        "resources.basic",
+        "resources.bulk_update",
+        "webhooks.basic",
+        "webhooks.retries",
+        "reports.basic"
+      ]
+    },
+    "enterprise": {
+      "label": "Enterprise",
+      "max_enterprises": null,
+      "portfolio_access_tokens": true,
+      "rate_limit_per_minute": 2400,
+      "features": [
+        "reservations.basic",
+        "reservations.bulk_create",
+        "reservations.waitlist",
+        "resources.basic",
+        "resources.bulk_update",
+        "webhooks.basic",
+        "webhooks.retries",
+        "webhooks.custom_events",
+        "reports.basic",
+        "reports.advanced",
+        "billing.invoices",
+        "sso.saml"
+      ]
+    }
+  },
+  "feature_notes": {
+    "resources.bulk_update": "Added in API version 2.4.0 via PATCH /v1/resources/bulk.",
+    "reports.basic": "Requires the reports:read scope. See authentication.md.",
+    "reservations.waitlist": "Added in API version 2.5.0 via POST /v1/reservations/waitlist. Available on Growth and Enterprise plans.",
+    "billing.invoices": "Added in API version 2.5.0. Requires the billing:manage scope, gated to the owner or billing_admin roles. GET /v1/enterprises/{id}/billing/invoices.",
+    "sso.saml": "Enterprise plan only; configured separately in the account dashboard, not via the Connector API."
+  }
+}
