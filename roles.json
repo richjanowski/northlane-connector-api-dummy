@@ -1,6 +1,6 @@
 {
   "$schema": "https://api.northlane.example/schemas/roles.json",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "roles": [
     {
       "id": "owner",
@@ -12,9 +12,21 @@
         "resources:read",
         "resources:write",
         "webhooks:manage",
-        "reports:read"
+        "reports:read",
+        "billing:manage"
       ],
       "portfolio_scope": true
+    },
+    {
+      "id": "billing_admin",
+      "label": "Billing Admin",
+      "description": "Invoice access and payment method management for a single enterprise, without full owner rights.",
+      "default_scopes": [
+        "billing:manage",
+        "reports:read"
+      ],
+      "portfolio_scope": false,
+      "added_in_version": "2.5.0"
     },
     {
       "id": "manager",
