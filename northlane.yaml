@@ -1,0 +1,47 @@
+# Northlane Connector API — example client configuration
+# Used by the reference client to know where to connect and what to request.
+
+api:
+  base_url: https://api.northlane.example/v1
+  version: "2.5.0"
+  token_url: https://api.northlane.example/v1/oauth/token
+
+auth:
+  client_id: ${NORTHLANE_CLIENT_ID}
+  client_secret: ${NORTHLANE_CLIENT_SECRET}
+  scopes:
+    - reservations:read
+    - reservations:write
+    - resources:read
+    - resources:write
+    - reports:read
+
+rate_limiting:
+  requests_per_minute: 900
+  burst_allowance: 50
+  retry_on_429: true
+  max_retries: 3
+
+webhooks:
+  enabled: true
+  callback_url: https://example-hotel-app.com/webhooks/northlane
+  secret: ${NORTHLANE_WEBHOOK_SECRET}
+  subscribed_events:
+    - reservation.created
+    - reservation.cancelled
+    - reservation.no_show
+    - resource.state_changed
+
+enterprises:
+  - id: ent_123
+    label: Downtown Property
+    portfolio_scope: false
+  - id: ent_456
+    label: Airport Property
+    portfolio_scope: false
+
+logging:
+  level: info
+  redact_fields:
+    - auth.client_secret
+    - webhooks.secret

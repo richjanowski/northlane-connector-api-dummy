@@ -1,0 +1,9 @@
+reservation_id,enterprise_id,resource_id,resource_category,guest_ref,start,end,status,pricing_unit,amount_usd
+res_10001,ent_123,res_456,room,guest_9001,2026-07-01,2026-07-03,confirmed,night,412.00
+res_10002,ent_123,res_478,room,guest_9002,2026-07-02,2026-07-02,cancelled,night,0.00
+res_10003,ent_456,desk_112,desk,guest_9003,2026-07-05,2026-07-05,confirmed,hour,24.00
+res_10004,ent_123,res_490,room,guest_9004,2026-07-06,2026-07-09,no_show,night,618.00
+res_10005,ent_456,table_004,table,guest_9005,2026-07-06,2026-07-06,confirmed,slot,0.00
+res_10006,ent_123,res_456,room,guest_9006,2026-07-10,2026-07-11,waitlisted,night,0.00
+res_10007,ent_456,desk_118,desk,guest_9007,2026-07-11,2026-07-11,confirmed,hour,32.00
+res_10008,ent_123,res_502,room,guest_9008,2026-07-12,2026-07-15,confirmed,night,927.00
