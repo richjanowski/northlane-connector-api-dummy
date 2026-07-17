@@ -1,6 +1,7 @@
 # Integrating Northlane with external systems
 
-> **API version:** 2.4.0 (2026-06-15)
+> **API version:** 2.5.0 (2026-07-01)
+> **Changed since 2.4.0:** the `billing:manage` scope now exists, so payment/billing integrations no longer require an `owner`-level token — see [Scoped access](#scoped-access-for-third-party-integrations) below.
 
 This document describes how the Northlane Connector API is designed to be integrated into a broader software stack — POS systems, payment processors, CRMs, accounting platforms, revenue management tools, and similar. It covers the integration surface **Northlane exposes**: authentication, data exchange patterns, and event delivery.
 
@@ -76,9 +77,8 @@ Some illustrative (not exhaustive) scope combinations for common integration sha
 | Availability sync (read-only) | `resources:read` |
 | Reservation creation from an external booking source | `reservations:read`, `reservations:write` |
 | Resource state sync (e.g. maintenance/IoT systems) | `resources:read`, `resources:write` |
+| Invoice/payment reconciliation | `billing:manage` |
 | Event-driven automation (no direct API writes) | `webhooks:manage` only |
-
-As of 2.4.0, there is no dedicated scope for invoice or payment data — integrations needing that information require an `owner`-level token. A narrower, purpose-built scope for this is on the roadmap.
 
 See [authentication.md](authentication.md) for the full scope list and how scopes map to Northlane's built-in roles.
 
@@ -98,7 +98,7 @@ The following are common categories of systems that integrate with Northlane, de
 
 - **Property/booking-adjacent systems** (e.g. channel managers) — typically bidirectional, syncing reservations and availability
 - **Point-of-sale systems** — typically push-consuming (reservation events) plus pull for resource/guest lookups
-- **Payment and billing systems** — typically consumers of reservation and reporting endpoints; as of 2.4.0 this requires an `owner`-level token, since no narrower billing-specific scope exists yet
+- **Payment and billing systems** — typically consumers of the `billing:manage`-scoped endpoints and related webhook events
 - **CRM and guest messaging tools** — typically push-consuming reservation lifecycle events
 - **Accounting/ERP systems** — typically pull-based, often on a scheduled batch basis
 - **Business intelligence tools** — typically pull-based, read-only, using `reports:read`
